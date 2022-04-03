@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Weather</title>
+    <link rel="stylesheet" href="{% static 'weather\main.css' %}">
+</head>
+<body>
+
+    <div class="mainRow">
+    <div class="col logo"><p>Weather & Road Risk</p></div>
+    <div class="col forms_div">
+        <form method="GET">
+            {% csrf_token %}
+            {% for forms in form  %}
+            {{forms}}{% endfor %}<input type="submit" value="Search City">
+        </form>
+    </div>
+</div>
+<div class="mainRow">
+<div class="col weatherMenu">
+    <ul>
+        <li><a href="{% url 'Weather:index' %}">Today</a></li>
+        <li><a href="">Hourly</a></li>
+        <li><a href="">WeekEnd</a></li>
+        <li><a href="">Monthly</a></li>
+        <li><a href="">Radar Map</a></li>
+    </ul>
+</div>
+</div>
+
+<div class="weatherWrapper">
+<div class="mainRow">
+<div class="col WeatherContainer">
+    {% for weathers  in weather %}
+        <p>{{weathers.currentName}}&nbsp; &nbsp;{{weathers.currentCounrty}}&nbsp; As Of&nbsp;{{weathers.currentTime}}</p>
+    <p><span class="humidity">{{weathers.currentTemp}}<sup>o</sup></span><img src="http://openweathermap.org/img/w/{{weathers.currentWeatherIcon}}.png"></p>
+    <p>{{weathers.currentWeatherdesc}}</p>
+    <p>Day&nbsp;{{weathers.dailytempDay}}<sup>o</sup>&nbsp;&nbsp;. Night&nbsp;{{weathers.dailytempNight}}<sup>o</sup></p>
+
+
+{% endfor %}
+</div>
+
+<div class="col RoadRisk"></div>
+</div>
+
+<div class="mainRow">
+    <div class="col  WeatherContainer">
+{% for weathers in weather  %}
+<h4>Today's Forecast For {{weathers.currentName}} </h4>
+
+  <div class="col weather-item">
+      <h5>Morning</h5>
+      <p><span>{{weathers.dailytempMorn}}<sup>o</sup></span></p>
+      <p><img src="http://openweathermap.org/img/w/{{weathers.dailyWeatherIcon}}.png"></p>
+      <p>{{weathers.dailyHumidity}}%</p>
+    </div>
+  <div class="col weather-item">
+      <h5>Afternoon</h5>
+      <p><span>{{weathers.dailytempEve}}<sup>o</sup></span></p>
+      <p><img src="http://openweathermap.org/img/w/{{weathers.dailyWeatherIcon}}.png"></p>
+      <p>{{weathers.dailyHumidity}}%</p>
+      
+    
+    </div>
+  <div class="col weather-item">
+      <h5>Evening</h5>
+      <p><span>{{weathers.dailytempEve}}<sup>o</sup></span></p>
+      <p><img src="http://openweathermap.org/img/w/{{weathers.dailyWeatherIcon}}.png"></p>
+      <p>{{weathers.dailyHumidity}}%</p>
+    
+    
+    </div>
+  <div class="col weather-item">
+      <h5>Night</h5>
+      <p><span>{{weathers.dailytempNight}}<sup>o</sup></span></p>
+      <p><img src="http://openweathermap.org/img/w/{{weathers.dailyWeatherIcon}}.png"></p>
+      <p>{{weathers.dailyHumidity}}%</p>
+
+    {% endfor %}
+</div>
+        
+    
+    
+    </div>
+    
+
+    
+</div>
+
+
+
+
+
+</body>
+</html>
