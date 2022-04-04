@@ -32,6 +32,8 @@ def urlCall(request,CityName,ApID):
                 'currentWeatherM':data2['current']['weather'][0]['main'],
                 'currentWeatherIcon':data2['current']['weather'][0]['icon'],
                 'currentWeatherdesc':data2['current']['weather'][0]['description'],
+                'currentWeatherdesc':data2['current']['weather'][0]['description'],
+                'currentVisibility':data2['current']['visibility']/100,
                 
                 'hourlydt':data2['hourly'][0]['dt'],
                 'hourlyTemp':data2['hourly'][0]['temp'],
@@ -58,7 +60,12 @@ def urlCall(request,CityName,ApID):
                 'dailytempMin':data2['daily'][0]['temp']['min'],
                 'dailytempMax':data2['daily'][0]['temp']['max'],
                 'dailyHumidity':data2['daily'][0]['humidity'],
+                'dailyPresure':data2['daily'][0]['pressure'],
+                'dailyDew':data2['daily'][0]['dew_point'],
+                'dailyMoon':data2['daily'][0]['moon_phase'],
+                'dailyWind':data2['daily'][0]['wind_speed']%data2['daily'][0]['wind_deg'],
                 
+    
                 'dailyFeelsDay':data2['daily'][0]['feels_like']['day'],
                 'dailyFeelsNight':data2['daily'][0]['feels_like']['night'],
                 'dailyFeelsEve':data2['daily'][0]['feels_like']['eve'],
@@ -67,6 +74,8 @@ def urlCall(request,CityName,ApID):
                 'dailyWeatherIcon':data2['daily'][0]['weather'][0]['icon'],
                 'dailyWeatherMain':data2['daily'][0]['weather'][0]['main'],
                 'dailyWeatherDesc':data2['daily'][0]['weather'][0]['description'],
+                
+                'Currentuvi':data2['daily'][0]['uvi']
                                               
                 
             }

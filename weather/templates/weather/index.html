@@ -36,7 +36,7 @@
 <div class="mainRow">
 <div class="col WeatherContainer">
     {% for weathers  in weather %}
-        <p>{{weathers.currentName}}&nbsp; &nbsp;{{weathers.currentCounrty}}&nbsp; As Of&nbsp;{{weathers.currentTime}}</p>
+        <p>{{weathers.currentName}},&nbsp;{{weathers.currentCounrty}}&nbsp; As Of&nbsp;{{weathers.currentTime}}</p>
     <p><span class="humidity">{{weathers.currentTemp}}<sup>o</sup></span><img src="http://openweathermap.org/img/w/{{weathers.currentWeatherIcon}}.png"></p>
     <p>{{weathers.currentWeatherdesc}}</p>
     <p>Day&nbsp;{{weathers.dailytempDay}}<sup>o</sup>&nbsp;&nbsp;. Night&nbsp;{{weathers.dailytempNight}}<sup>o</sup></p>
@@ -84,13 +84,86 @@
     {% endfor %}
 </div>
         
-    
+</div>
     
     </div>
-    
+<!--end of today's forecast-->   
+<div class="Todays_weather">
+    {% for weathers in weather %}
+<h2>Weather Today in {{weathers.currentName}},&nbsp;{{weathers.currentCounrty}}</h2>
 
-    
+    <div class="mainRow">
+        <div class="col feel">
+            <p><span style="font-size:60px;">{{weathers.dailyFeelsDay}}<sup>o</sup></span>
+            <br>Feels Like
+        </p>
+    </div>
+            <div class="feel_image">
+                <p><img src="http://openweathermap.org/img/w/{{weathers.dailyWeatherIcon}}.png"></p>
+                
+                
+            </div>
+        </div>
+<div class="mainRow">
+    <div class="col levels1">
+        <table>
+            <tr>
+                <td>High/Low</td>
+                <td>{{weathers.dailytempMax}}<sup>o</sup>/{{weathers.dailytempMin}}<sup>o</sup></td>
+            </tr>
+            <tr>
+                <td>Humidity</td>
+                <td>{{weathers.dailyHumidity}}%</td>
+            </tr>
+            <tr>
+                <td>Pressure</td>
+                <td>{{weathers.dailyPresure }} mb</td>
+            </tr>
+            <tr>
+                <td>Visibility</td>
+                <td>{{weathers.currentVisibility}} km</td>
+            </tr>
+            
+
+        </table>
+    </div>
+
+    <div class="col levels2">
+        <table>
+            <tr>
+                <td>Wind</td>
+                <td>{{weathers.dailyWind}} km/h</td>
+            </tr>
+            <tr>
+                <td>Dew Points</td>
+                <td>{{weathers.dailyDew}}%</td>
+            </tr>
+            <tr>
+                <td>Uv index</td>
+                <td>{{weathers.Currentuvi}}</td>
+            </tr>
+            <tr>
+                <td>Moon Phase</td>
+                <td>{{weathers.dailyMoon}}km</td>
+            </tr>
+            
+
+        </table>
+    </div>
 </div>
+{% endfor %}
+</div><!--end of todays weather--> 
+
+
+
+
+
+
+
+
+
+</div><!--end of weatherwrapper -->
+
 
 
 

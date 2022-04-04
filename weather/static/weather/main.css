@@ -24,7 +24,7 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     width: 40%;
     float: left;
-    background: linear-gradient(skyblue ,rgb(85, 127, 143));
+    background: linear-gradient(rgb(68, 109, 126) ,rgb(85, 127, 143));
 
 }
 .forms_div{
@@ -33,7 +33,7 @@ body{
     font-family: 'Courier New', Courier, monospace;
     width: 60%;
     float: left;
-    background: linear-gradient(skyblue ,rgb(85, 127, 143));
+    background: linear-gradient(rgb(68, 109, 126) ,rgb(85, 127, 143));
 }
 .forms_div input[type=text]{
     border: none;
@@ -62,13 +62,14 @@ body{
 .WeatherContainer{
     width:60%;
     padding:20px;
-    background: linear-gradient(skyblue ,rgb(85, 127, 143));
+    background: linear-gradient(rgb(68, 109, 126) ,rgb(85, 127, 143));
     border-radius: 5px;
     margin: 20px;
     color: whitesmoke;
     font-size: 24px;
     
 }
+
 .WeatherContainer p > img{
     float: right;
     height: 150px;
@@ -81,7 +82,7 @@ body{
     height:250px;
     padding:10px;
     margin-top: 20px;
-    background: linear-gradient(skyblue ,rgb(146, 208, 233));
+    background: linear-gradient(rgb(68, 109, 126) ,rgb(85, 127, 143));
     border-radius: 5px;
 }
 .weatherWrapper{
@@ -129,3 +130,44 @@ body{
    text-align: center;
 }
 
+.Todays_weather{
+    color: white;
+    width:60%;
+    padding:20px;
+    margin: 20px;
+    border-radius: 5px;
+    background: linear-gradient(rgb(68, 109, 126) ,rgb(85, 127, 143));
+}
+.feel{
+    float:left;
+    width: 50%;   
+}
+.feel_image{
+    float:left;
+    width: 50%;
+     
+}
+.levels1{
+    float: left;
+    width: 50%;   
+}
+.levels1 table{
+    width:100%;
+    
+}
+.levels2{
+    float: left;
+    width: 50%;
+    
+}
+.levels2 table{
+    width:100%;  
+}
+.levels2 td{
+    padding: 10px;
+    border-top: 1px solid rgb(151, 149, 149);
+}
+.levels1 td{
+    padding: 10px;
+    border-top: 1px solid rgb(170, 167, 167);
+}
