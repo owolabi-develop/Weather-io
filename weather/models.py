@@ -9,3 +9,5 @@ class City(models.Model):
     
     def __str__(self):
         return self.cityName
+    class Meta:
+        ordering =['cityName']

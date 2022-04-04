@@ -9,20 +9,21 @@ from .models import City
 from . forms import CityForm
 # Create your views here.
 
-def index(request):
-    if request.method == "GET":
-        form = CityForm(request.GET)
-        if form.is_valid():
-            CityName = form.cleaned_data['CityName']
-            ApID ='9d1b46b139f8ba220cf513479b65ffd2'
-            url = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}'.format(CityName,ApID)
-            weather = requests.get(url)
-            data = json.loads(weather.text)
-            url2 = 'https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&appid={}'.format(data['coord']['lat'],data['coord']['lon'],ApID)
-            weather2 = requests.get(url2)
-            data2 = json.loads(weather2.text)
-            weather_datas =[]
-            weather_data = {
+def urlCall(request,CityName,ApID):
+    weather_datas = []
+    
+    url = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}'.format(CityName,ApID)
+    weather = requests.get(url)
+    data = json.loads(weather.text)
+    try:
+        url2 = 'https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&appid={}'.format(data['coord']['lat'],data['coord']['lon'],ApID)
+        weather2 = requests.get(url2)
+    except:
+        form = CityForm()
+        return render(request,'weather/index.html',{'form':form})
+    data2 = json.loads(weather2.text)
+     
+    weather_data = {
                 'currentCounrty':data['sys']['country'],
                 'currentName':data['name'],
                 'currentTime':data2['current']['dt'],
@@ -69,16 +70,20 @@ def index(request):
                                               
                 
             }
-            weather_datas.append(weather_data)
+    weather_datas.append(weather_data)
+            
+    return weather_datas
+    
+def index(request):
+    ApID ='9d1b46b139f8ba220cf513479b65ffd2'
+    
+    if request.method == "GET":
+        form = CityForm(request.GET)
+        if form.is_valid():
+            CityName = form.cleaned_data['CityName']
             form = CityForm()
-            return render(request,'weather/index.html',{'weather':weather_datas,'form':form})
+            return render(request,'weather/index.html',{'weather': urlCall(request,CityName,ApID),'form':form})      
+    else: 
+        form = CityForm()
         
-        
-
-             
-           
-    else:
-        
-         form = CityForm()
-        
-    return render(request,'weather/index.html',{'form':form})
+    return render(request,'weather/index.html',{'weather': urlCall(request,City.objects.all()[0],ApID),'form':form})
