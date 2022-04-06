@@ -24,7 +24,7 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     width: 40%;
     float: left;
-    background: linear-gradient(rgb(68, 109, 126) ,rgb(85, 127, 143));
+    background: linear-gradient(skyblue ,rgb(85, 127, 143));
 
 }
 .forms_div{

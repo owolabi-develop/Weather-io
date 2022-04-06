@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Current Weather</title>
     <link rel="stylesheet" href="{% static 'weather\main.css' %}">
+    <script src="https://kit.fontawesome.com/18de66c05e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -56,7 +57,7 @@
   <div class="col weather-item">
       <h5>Morning</h5>
       <p><span>{{weathers.dailytempMorn}}<sup>o</sup></span></p>
-      <p><img src="http://openweathermap.org/img/w/{{weathers.dailyWeatherIcon}}.png"></p>
+      <p><img src="http://openweathermap.org/img/w/{{weathers.hourlyWeatherIcon}}.png"></p>
       <p>{{weathers.dailyHumidity}}%</p>
     </div>
   <div class="col weather-item">
@@ -108,11 +109,11 @@
     <div class="col levels1">
         <table>
             <tr>
-                <td>High/Low</td>
+                <td><i class="fa-solid fa-temperature-low"></i>&nbsp;High/Low</td>
                 <td>{{weathers.dailytempMax}}<sup>o</sup>/{{weathers.dailytempMin}}<sup>o</sup></td>
             </tr>
             <tr>
-                <td>Humidity</td>
+                <td><i class="fa-regular fa-droplet-degree"></i>&nbsp;Humidity</td>
                 <td>{{weathers.dailyHumidity}}%</td>
             </tr>
             <tr>
@@ -120,7 +121,7 @@
                 <td>{{weathers.dailyPresure }} mb</td>
             </tr>
             <tr>
-                <td>Visibility</td>
+                <td><i class="fa-solid fa-eye"></i>&nbsp;Visibility</td>
                 <td>{{weathers.currentVisibility}} km</td>
             </tr>
             
@@ -131,11 +132,11 @@
     <div class="col levels2">
         <table>
             <tr>
-                <td>Wind</td>
+                <td><i class="fa-solid fa-wind"></i>&nbsp;Wind</td>
                 <td>{{weathers.dailyWind}} km/h</td>
             </tr>
             <tr>
-                <td>Dew Points</td>
+                <td><i class="fa-solid fa-temperature-snow"></i>Dew Points</td>
                 <td>{{weathers.dailyDew}}%</td>
             </tr>
             <tr>
@@ -143,7 +144,7 @@
                 <td>{{weathers.Currentuvi}}</td>
             </tr>
             <tr>
-                <td>Moon Phase</td>
+                <td><i class="fa-regular fa-moon"></i>&nbsp;Moon Phase</td>
                 <td>{{weathers.dailyMoon}}km</td>
             </tr>
             

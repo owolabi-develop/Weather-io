@@ -1,4 +1,5 @@
 from contextvars import Context
+import io
 import json
 from django.shortcuts import render
 from django.template import context
@@ -8,10 +9,11 @@ from django.urls import reverse
 from .models import City
 from . forms import CityForm
 # Create your views here.
+from weather_io.settings import Ap_ID
 
 def urlCall(request,CityName,ApID):
     weather_datas = []
-    
+    ApID = Ap_ID
     url = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}'.format(CityName,ApID)
     weather = requests.get(url)
     data = json.loads(weather.text)
@@ -84,8 +86,9 @@ def urlCall(request,CityName,ApID):
     return weather_datas
     
 def index(request):
-    ApID ='9d1b46b139f8ba220cf513479b65ffd2'
-    
+   
+    ApID = Ap_ID
+    print(ApID)
     if request.method == "GET":
         form = CityForm(request.GET)
         if form.is_valid():
